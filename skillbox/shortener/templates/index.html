@@ -1,0 +1,28 @@
+{% extends 'bootstrap4/bootstrap4.html' %}
+{% load bootstrap4 %}
+
+{% block bootstrap4_before_content %}
+{% if link %}
+<div class="alert alert-success" role="alert">
+    Link created: <a href="{{ link }}">{{ link }}</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block bootstrap4_content %}
+    <div class="container">
+        <h1>Enter url</h1>
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+        <form action="." method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            {% endbuttons %}
+        </form>
+        
+        {% block content %}{% endblock %}
+
+{% endblock %}
+

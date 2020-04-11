@@ -1,0 +1,10 @@
+version: '3'
+services:
+  shortener:
+    ports:
+      - "8000:8000"
+    build:
+      context: ./skillbox
+      dockerfile: Dockerfile
+    environment:
+      PYTHONUNBUFFERED: 0
